@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { FormControl, Button, FormGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+import './Common.css'
+
+
+
 
 export default class Login extends Component {
   constructor() {
@@ -17,21 +24,23 @@ export default class Login extends Component {
       this.context.router.history.push('/users')
     }
   }
+  
   render() {
     return (
-      <div>
-        Login
+      <div  className="CenteredForm">
+        <h3>Login</h3>
+        
         <form onSubmit={this.handleSubmit}>
-          <div>
-          <input type='text' placeholder='Email'/>
-          </div>
+           <FormGroup>
+             <FormControl type="email" placeholder="Email" />
+          </FormGroup>
 
+          <FormGroup>
+             <FormControl type="password" placeholder="Password" />
+          </FormGroup>
+          
           <div>
-          <input type='password' placeholder='Password'/>
-          </div>
-
-          <div>
-          <button type='submit'>Login</button>
+          <Button bsSize = "large"  type='submit'>Login</Button>
           </div>
           <Link to='/register'>Register new user</Link>
         </form>

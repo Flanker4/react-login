@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router-dom'
+import { FormControl, Button, FormGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+import './Common.css'
 
 export default class Register extends Component {
   constructor() {
@@ -21,27 +25,26 @@ export default class Register extends Component {
   }
   render() {
     return (
-      <div>
-        Registration
+           <div  className="CenteredForm">
+        <h3>Registration</h3>
         <form onSubmit={this.handleSubmit}>
-          <div>
-          <input type='text' placeholder='Email'/>
-          </div>
+           <FormGroup>
+             <FormControl type="email" placeholder="Email" />
+          </FormGroup>
 
+          <FormGroup>
+             <FormControl type="password" placeholder="Password" />
+          </FormGroup>
+           <FormGroup>
+             <FormControl type="password" placeholder="Confirm Password" />
+          </FormGroup>
           <div>
-          <input type='password' placeholder='Password'/>
-          </div>
-          
-          <div>
-          <input type='password' placeholder='Confirm Password'/>
-          </div>
-          
-          <div>
-          <button type='submit'>Registration</button>
+          <Button type='submit'>Registration</Button>
           </div>
           <Link to='/login'>Login</Link>
         </form>
       </div>
+
     )
   }
 }
