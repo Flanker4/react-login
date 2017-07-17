@@ -21,6 +21,7 @@ export default class Login extends Component {
     const userLogin = window.localStorage.getItem('login')
     const userPass = window.localStorage.getItem('password')
     if ((login===userLogin)&&(pass==userPass)){
+      window.localStorage.setItem('token',login)
       this.context.router.history.push('/users')
     }
   }
@@ -29,7 +30,6 @@ export default class Login extends Component {
     return (
       <div  className="CenteredForm">
         <h3>Login</h3>
-        
         <form onSubmit={this.handleSubmit}>
            <FormGroup>
              <FormControl type="email" placeholder="Email" />
