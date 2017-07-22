@@ -2,21 +2,20 @@ import 'babel-polyfill'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './components/Login'
-import Register from './components/Register'
-import Users from './components/Users'
+import Routes from './Routes';
 
-
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Link } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
+
+const childProps = {
+      userToken: window.localStorage.getItem("token"),
+      updateUserToken: this.updateUserToken,
+    };
 
 ReactDOM.render(
 <BrowserRouter>
   <div>
-    <Route exact path="/" component={Login}/>
-    <Route path='/register' component={Register} />
-    <Route path='/users' component={Users} />
-    <Route path='/login' component={Login} />
+   <Routes childProps={childProps} />
   </div>
 </BrowserRouter>
 ,
