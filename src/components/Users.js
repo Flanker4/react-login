@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import './Common.css'
 
-export default class Admin extends Component {
+export default class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +12,7 @@ export default class Admin extends Component {
   }
   
   handleLogout(e) {
+    this.props.updateUserToken(null)
     const userPass = window.localStorage.removeItem('token')
     this.context.router.history.push('/login')
   }
@@ -66,7 +67,7 @@ export default class Admin extends Component {
   }
 }
 
-Admin.contextTypes = {
+Users.contextTypes = {
   router: React.PropTypes.shape({
     history: React.PropTypes.object.isRequired,
   }),

@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import './Common.css'
 
 export default class Register extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -17,8 +17,7 @@ export default class Register extends Component {
     const pass = e.target.elements[1].value
     const passConfirm = e.target.elements[2].value
     if (pass===passConfirm){
-      window.localStorage.setItem('login', login)
-      window.localStorage.setItem('password', pass)
+      this.props.registerUser(login, pass)
       this.context.router.history.push('/login')
     }
     

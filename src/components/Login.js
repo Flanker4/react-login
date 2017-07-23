@@ -9,8 +9,8 @@ import './Common.css'
 
 
 export default class Login extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -18,10 +18,8 @@ export default class Login extends Component {
     e.preventDefault()
     const login = e.target.elements[0].value
     const pass = e.target.elements[1].value
-    const userLogin = window.localStorage.getItem('login')
-    const userPass = window.localStorage.getItem('password')
-    if ((login===userLogin)&&(pass==userPass)){
-      window.localStorage.setItem('token',login)
+   
+    if (this.props.checkLogin(login,pass)){
       this.context.router.history.push('/users')
     }
   }

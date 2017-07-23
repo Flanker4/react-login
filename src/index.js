@@ -6,11 +6,17 @@ import Routes from './Routes';
 
 import { BrowserRouter, Switch, Link } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
+import Storage from './Storage'
+
+
+this.storage = new Storage()
 
 const childProps = {
       userToken: window.localStorage.getItem("token"),
-      updateUserToken: this.updateUserToken,
-    };
+      updateUserToken: this.storage.updateUserToken,
+      checkLogin: this.storage.checkLogin,
+      registerUser: this.storage.registerUser
+};
 
 ReactDOM.render(
 <BrowserRouter>
