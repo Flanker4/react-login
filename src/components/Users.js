@@ -12,9 +12,10 @@ export default class Users extends Component {
   }
   
   handleLogout(e) {
-    this.props.updateUserToken(null)
-    const userPass = window.localStorage.removeItem('token')
-    this.context.router.history.push('/login')
+    this.props.storage.updateUserToken(null)
+    this.props.updateStateWithStorage(this.props.storage)
+    
+    this.props.history.push('/login')
   }
   
   componentDidMount() {

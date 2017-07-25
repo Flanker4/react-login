@@ -17,8 +17,8 @@ export default class Register extends Component {
     const pass = e.target.elements[1].value
     const passConfirm = e.target.elements[2].value
     if (pass===passConfirm){
-      this.props.registerUser(login, pass)
-      this.context.router.history.push('/login')
+      this.props.storage.registerUser(login, pass)
+      this.props.history.push('/login')
     }
     
   }

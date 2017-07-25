@@ -1,29 +1,17 @@
-import 'babel-polyfill'
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App';
 import './index.css';
+import registerServiceWorker from './registerServiceWorker';
 import Routes from './Routes';
 
-import { BrowserRouter, Switch, Link } from 'react-router-dom'
-import registerServiceWorker from './registerServiceWorker';
-import Storage from './Storage'
-
-
-this.storage = new Storage()
-
-const childProps = {
-      userToken: window.localStorage.getItem("token"),
-      updateUserToken: this.storage.updateUserToken,
-      checkLogin: this.storage.checkLogin,
-      registerUser: this.storage.registerUser
-};
-
 ReactDOM.render(
-<BrowserRouter>
+<Router>
   <div>
-   <Routes childProps={childProps} />
+    <App />
   </div>
-</BrowserRouter>
+</Router>
 ,
   document.getElementById('root'));
-registerServiceWorker();
+

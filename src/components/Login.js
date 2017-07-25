@@ -4,8 +4,8 @@ import { FormControl, Button, FormGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './Common.css'
-
-
+import ReactConfirmAlert, { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css' 
 
 
 export default class Login extends Component {
@@ -19,8 +19,18 @@ export default class Login extends Component {
     const login = e.target.elements[0].value
     const pass = e.target.elements[1].value
    
-    if (this.props.checkLogin(login,pass)){
-      this.context.router.history.push('/users')
+    if (this.props.storage.checkLogin(login,pass)){
+      this.props.updateStateWithStorage(this.props.storage)
+      this.props.history.push('/users')
+    }else{
+      confirmAlert({
+        title: 'Wrong username or password',                        // Title dialog 
+        message: 'Do you want register a new user?',               // Message dialog 
+        confirmLabel: 'Register',                           // Text button confirm 
+        cancelLabel: 'Cancel',                             // Text button cancel 
+        onConfirm: () => this.props.history.push('/register') ,    // Action after Confirm 
+        onCancel: () => {},
+      })
     }
   }
   

@@ -1,6 +1,10 @@
 import React from 'react';
 
 export default class Storage {
+  constructor(name) {
+    this.name = name;
+  }
+
     updateUserToken(token) {
      window.localStorage.setItem('token',token)
     }
@@ -13,6 +17,10 @@ checkLogin(login, password){
        return true
     }
     return false
+}
+
+userToken() {
+    return   window.localStorage.getItem('token')
 }
 
 registerUser(login, password) {
